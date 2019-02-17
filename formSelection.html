@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
+  <title>Is My Classmate a Vampire?</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <title>Is My Classmate a Vampire?</title>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+  <script type="text/javascript">
+    function display_chosen_option() {
+      var x = document.getElementById("mySelect").selectedIndex;
+      var y = document.getElementById("mySelect").options;
+      window.alert("Index: " + y[x].index + " is " + y[x].text);
+    }
+  </script>
 </head>
-
 <body>
 
-  <!-- Navigation -->
+<!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
       <a class="navbar-brand" href="#">Is My Classmate A Vampire?</a>
@@ -45,22 +49,28 @@
     </div>
   </nav>
 
-  <!-- Page Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
+<div class="container">
+  <h2>Form control: select</h2>
 
-        <h1 class="mt-5">Select Your Desired Form</h1>
+  <div class="form-group">
+    <label for="mySelect">Select Model Logic:</label>
+    <select class="form-control" id="mySelect">
+      <option value='1'>Random Guess</option>
+      <option value='2'>Threshold Based Method</option>
 
-        </ul>
-      </div>
-    </div>
+    </select>   
+
+    <!-- write a function to display chosen option with a pop up window. -->
+    <button type="button" onclick="display_chosen_option()">Display index</button>
+
+    <button type="button" onclick="document.getElementById('mySelect').selectedIndex = '-1'">Deselect all options.</button>    
   </div>
 
-  <!-- Bootstrap core JavaScript -->
+</div>
+
+<!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>
