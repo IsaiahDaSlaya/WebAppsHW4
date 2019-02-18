@@ -12,13 +12,6 @@
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <script type="text/javascript">
-    function display_chosen_option() {
-      var x = document.getElementById("mySelect").selectedIndex;
-      var y = document.getElementById("mySelect").options;
-      window.alert("Index: " + y[x].index + " is " + y[x].text);
-    }
-  </script>
 </head>
 
 <body>
@@ -52,24 +45,31 @@
     </div>
   </nav>
 
-  <div class="container">
-    <h2>Form control: select</h2>
 
-    <div class="form-group">
-      <label for="mySelect">Select Model Logic:</label>
-      <select class="form-control" id="mySelect">
-        <option value='1'>Random Guess</option>
-        <option value='2'>Threshold Based Method</option>
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
 
-      </select>
+          <h1 class="mt-5" style="padding-bottom: 50px" >Choose How To Identify The Vampire</h1>
 
-      <!-- write a function to display chosen option with a pop up window. -->
-      <button type="button" onclick="display_chosen_option()">Display index</button>
-
-      <button type="button" onclick="document.getElementById('mySelect').selectedIndex = '-1'">Deselect all options.</button>
+          <div class="form-group">
+            
+            <select class="form-control" id="mySelect">
+              <option value='1'>Random Guess</option>
+              <option value='2'>Threshold Based Method</option>
+      
+            </select>
+      
+            <button type="button" onclick="location.href='threshold.html'">Confirm Choice</button>
+      
+            <button type="button" onclick="document.getElementById('mySelect').selectedIndex = '-1'">Revert Selected Option</button>
+        
+        
+      </div>
     </div>
-
   </div>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
