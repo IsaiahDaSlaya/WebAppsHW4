@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Is My Classmate a Vampire?</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <style>
+        *{
+		  box-sizing: border-box;
+		}
+		.row{ display: flex}
+		.column {
+		 float: left;
+		 width: 33.3%;
+		 padding: 10px;
+		}
+		/* Clear floats after the columns */
+		.row:after {
+		  content: "";
+		  display: table;	
+		  padding: 30px;
+		}		
+	</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="./index.html">Is My Classmate A Vampire?</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./teamMember.html">Team Member Introductions</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./formSelection.html">Vampire Detection Method Selection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./resultsPage.html">Results Page</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Form control: input</h2>
+        <div class="form-group">
+            <div class="row">
+                <div class="column">
+                    <h2>First Name</h2>
+                    <input type="Text" Name="FirstName" style='width:80%' />
+                </div>
+                <div class="column">
+                    <h2>Middle Name</h2>
+                    <input type="Text" Name="MiddleName" style='width:80%' />
+                </div>
+                <div class="column">
+                    <h2>Last Name</h2>
+                    <input type="Text" Name="LastName" style='width:80%' />
+                </div>
+            </div>
+            <div class="row">
+                <form id="Gender">
+                    <input type="radio" name="gender" value="male"> Male<br>
+                    <input type="radio" name="gender" value="female"> Female<br>
+                </form>
+            </div>
+            <div class="row">
+                <form>
+                    <input type="checkbox" name='galic'>Galic<br>
+                    <input type="checkbox" name='shadow'>Shadow<br>
+                </form>
+            </div>
+            <!-- Save value to Jason file after Submit -->
+            <button type="button" onclick="display_chosen_option()">Submit</button>
+
+        </div>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
