@@ -70,22 +70,16 @@ xhr.onreadystatechange = function()
     }
 };
 xhr.send(null);  */
-	var fs = require("fs");
+var xhttp = new XMLHttpRequest();
 
-var data = {}
-data.table = []
-for (i=0; i <26 ; i++){
-   var obj = {
-       id: i,
-       square: i * i
-   }
-   data.table.push(obj)
-}
-fs.writeFile ("vampireData.json", JSON.stringify(data), function(err) {
-    if (err) throw err;
-    console.log('complete');
+  xhttp.open("POST", "./vampireData", true);
+	    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     
     }
-);    
+  };
+  xhttp.send(JSON.stringify(jasonData));
+}
    };
    
     
