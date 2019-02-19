@@ -72,7 +72,7 @@ xhr.onreadystatechange = function()
 xhr.send(null);  */
 var xhttp = new XMLHttpRequest();
 
-  xhttp.open("POST", "./vampireData", true);
+  xhttp.open("POST", "./vampireData.json", true);
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      
