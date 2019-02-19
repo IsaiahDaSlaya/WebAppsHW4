@@ -73,13 +73,13 @@ xhr.send(null);  */
 var xhttp = new XMLHttpRequest();
 
   xhttp.open("POST", "./vampireData", true);
-	    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      
     }
-  };
+    };
   xhttp.send(JSON.stringify(jasonData));
-}
+
    };
    
     
