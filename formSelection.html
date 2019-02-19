@@ -9,6 +9,15 @@
   <meta name="author" content="">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+    function display_chosen_option() {
+      var x = document.getElementById("mySelect").selectedIndex;
+      var y = document.getElementById("mySelect").options;
+      location = y[x].value;
+    }
+  </script>
+
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -54,21 +63,25 @@
           <h1 class="mt-5" style="padding-bottom: 50px" >Choose How To Identify The Vampire</h1>
 
           <div class="form-group">
+              <select class="form-control" id="mySelect" name="example" onChange="go()">
+                <option value='teamMember.html'>Random Guess</option>
+                <option value='threshold.html'>Threshold Based Method</option>
+              </select id="mySelect">
+
             
-            <select class="form-control" id="mySelect">
-              <option value='1'>Random Guess</option>
-              <option value='2'>Threshold Based Method</option>
+
+              <button type="button" onclick="display_chosen_option()">Comfirm Choice</button>
+
       
-            </select>
-      
-            <button type="button" onclick="location.href='threshold.html'">Confirm Choice</button>
-      
-            <button type="button" onclick="document.getElementById('mySelect').selectedIndex = '-1'">Revert Selected Option</button>
+              <button type="button" onclick="document.getElementById('mySelect').selectedIndex = '-1'">Revert Selected Option</button>
+          </div>
         
         
       </div>
     </div>
   </div>
+
+
 
 
   <!-- Bootstrap core JavaScript -->
