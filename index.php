@@ -1,8 +1,6 @@
 <?php
 
-// This PHP script must be in "SOME_PATH/jsonFile/index.php"
-
-$file = 'jsonFile.txt';
+$file = './vampireData.json';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST')
 // or if(!empty($_POST))
