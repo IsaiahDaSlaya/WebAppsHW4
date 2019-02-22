@@ -42,47 +42,23 @@
            jsonData[this.name].push(this.value || '');
         } 
 	    else 
-		   {
-			   jsonData[this.name] = this.value || '';
-		   }
+	   {
+		   jsonData[this.name] = this.value || '';
+	   }
 	   });
-/*	    var jsonArr;
-	var xhr = new XMLHttpRequest(),
-    jsonArr,
-    method = "GET",
-    jsonRequestURL = "./";
-
-xhr.open(method, jsonRequestURL, true);
-xhr.onreadystatechange = function()
-{
-    if(xhr.readyState == 4 && xhr.status == 200)
-    {
-        // we convert your JSON into JavaScript object
-        jsonArr = JSON.parse(xhr.responseText);
-
-        // we add new value:
-        jsonArr.push(jsonData);
-
-        // we send with new request the updated JSON file to the server:
-        xhr.open("POST", jsonRequestURL, true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("jsonTxt="+JSON.stringify(jsonArr));       
-    }
-};
-xhr.send(null);  
-var xhttp = new XMLHttpRequest();
-
-  xhttp.open("POST", "./vampireData.json", true);
-    xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     
-    }
-    };
-  xhttp.send(JSON.stringify(jsonData));*/
+	   if(localStorage.getItem("Vampire") === null)
+	   {
+	 localStorage.setItem("Vampire", JSON.stringify(jsonData));
+	 var s = localStorage.getItem("Vampire");
+	 }
+	 else
+	 {
+	 var j = localStorage["Vampire"];
+	 localStorage["Vampire"] = j + JSON.stringify(jsonData);
+	 var s = localStorage.getItem("Vampire")
+	 }
 
    };
-   
-    
  
   </script>
 </head>
