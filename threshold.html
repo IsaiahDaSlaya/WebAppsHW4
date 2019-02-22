@@ -36,63 +36,56 @@
   <script type="text/javascript">
     function onSubmit() {
       var jsonData = {};
-      var formData = $("#inputForm").serializeArray();
-      $.each(formData, function () {
-        if (jsonData[this.name]) {
-          if (!jsonData[this.name].push) {
-            jsonData[this.name] = [jsonData[this.name]];
-          }
-          jsonData[this.name].push(this.value || '');
-        }
-        else {
-          jsonData[this.name] = this.value || '';
-        }
-      });
+	  var formData = $("#inputForm").serializeArray();
+	  console.log(formData);
+	$.each(formData, function() {
+        if (jsonData[this.name]) 
+		{
+           if (!jsonData[this.name].push) {
+               jsonData[this.name] = [jsonData[this.name]];
+           }
+           jsonData[this.name].push(this.value || '');
+        } 
+	    else 
+		   {
+			   jsonData[this.name] = this.value || '';
+		   }
+	   });
+    }
+/*	    var jsonArr;
+	var xhr = new XMLHttpRequest(),
+    jsonArr,
+    method = "GET",
+    jsonRequestURL = "./";
 
-      $.ajax({
-        type: "POST",
-        url: 'index.php',
-        dataType: 'json',
-        data: jsonData
-      });
+xhr.open(method, jsonRequestURL, true);
+xhr.onreadystatechange = function()
+{
+    if(xhr.readyState == 4 && xhr.status == 200)
+    {
+        // we convert your JSON into JavaScript object
+        jsonArr = JSON.parse(xhr.responseText);
 
+        // we add new value:
+        jsonArr.push(jsonData);
 
+        // we send with new request the updated JSON file to the server:
+        xhr.open("POST", jsonRequestURL, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("jsonTxt="+JSON.stringify(jsonArr));       
+    }
+};
+xhr.send(null);  
+var xhttp = new XMLHttpRequest();
 
-      // var jsonArr;
-      // var xhr = new XMLHttpRequest(),
-      //   jsonArr,
-      //   method = "GET",
-      //   jsonRequestURL = "./vampireData.json";
-      // xhr.open(method, jsonRequestURL, true);
-      // xhr.overrideMimeType('plain/text');
-      // xhr.onreadystatechange = function () {
-      //   if (xhr.readyState == 4 && xhr.status == 200) {
-      //     // we convert your JSON into JavaScript object
-      //     console.log(xhr.responseText);
-      //     jsonArr = JSON.parse(xhr.responseText);
-      //     // we add new value:
-      //     jsonArr.push(jsonData);
-      //     // we send with new request the updated JSON file to the server:
-      //     xhr.open("POST", jsonRequestURL, true);
-      //     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      //     xhr.send(JSON.stringify(jsonArr));
-      //   }
-      // };
-      // xhr.send(null);
-      // var xhttp = new XMLHttpRequest();
-      // // xhttp.open("GET", "./vampireData.json");
-      // xhttp.responseType = 'json';
-      // xhttp.open("POST", "./vampireData.json", true);
-      // xhttp.setRequestHeader("Content-Type", "application/json");
-      // console.log(jsonData);
-      // xhttp.send(JSON.stringify(jsonData));
-      // xhttp.onreadystatechange = function () {
-      //   if (this.readyState == 4 && this.status == 200) {
-      //             }
-      // };
-      // xhttp.send(null);
+  xhttp.open("POST", "./vampireData.json", true);
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     
+    }
     };
-
+  xhttp.send(JSON.stringify(jsonData)
+  */
 
 
   </script>
