@@ -47,10 +47,11 @@
            jsonData[this.name].push(this.value || '');
         } 
 	    else 
-		   {
-			   jsonData[this.name] = this.value || '';
-		   }
+	   {
+		   jsonData[this.name] = this.value || '';
+	   }
 	   });
+<<<<<<< HEAD
     }
 /*	    var jsonArr;
 	var xhr = new XMLHttpRequest(),
@@ -88,6 +89,22 @@ var xhttp = new XMLHttpRequest();
   */
 
 
+=======
+	   if(localStorage.getItem("Vampire") === null)
+	   {
+	 localStorage.setItem("Vampire", JSON.stringify(jsonData));
+	 var s = localStorage.getItem("Vampire");
+	 }
+	 else
+	 {
+	 var j = localStorage["Vampire"];
+	 localStorage["Vampire"] = j + JSON.stringify(jsonData);
+	 var s = localStorage.getItem("Vampire")
+	 }
+
+   };
+ 
+>>>>>>> cc24ebfcd11db8e424607c720f6462544c728954
   </script>
 </head>
 
