@@ -10,8 +10,11 @@
 
   <script type="text/javascript">
     function output_user_info(){
-      var user_name_str = "The user is named: " + document.getElementById('first_name').value + " " + document.getElementById('middle_name').value + 
+      var user_name_str = document.getElementById('first_name').value + " " + document.getElementById('middle_name').value + 
                           " " + document.getElementById('last_name').value + "; ";
+
+      var result_value = 0;
+
       var gender_str;
       if(document.getElementById("male_radio").checked)
       {
@@ -30,6 +33,7 @@
       else
       {
         galic_str = "The user does not eat galic; ";
+        result_value = result_value + 3;
       }
 
       var shadow_str;
@@ -40,22 +44,33 @@
       else
       {
         shadow_str = "The user does not have shadow; ";
+        rresult_value = result_value + 4;
       }
 
       var pale_str;
       if(document.getElementById("pale_checkbox").checked)
       {
         pale_str = "The user is complexion pale; ";
+        result_value = result_value + 3;
       }
       else
       {
         pale_str = "The user is not complexion pale; ";
       }
       
+      var result_str
+      if(result_value > 6)
+      {
+        result_str = "The user is Vampire;";
+      }
+      else
+      {
+        result_str = "The user is Human;";
+      }
       
 
 
-      document.getElementById('user_info').innerHTML = user_name_str + gender_str + galic_str + shadow_str + pale_str;
+      document.getElementById('user_info').innerHTML = user_name_str + gender_str + galic_str + shadow_str + pale_str + result_str;
 
       var table = document.getElementById("saving_table");
       var row = table.insertRow(1);
@@ -158,26 +173,25 @@
     <caption>Savings</caption>
     <thead>
       <tr>
-        <th>Month</th>
-        <th>Savings</th>
+        <th>Name</th>
+        <th>Vampire or Hunman?</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>January</td>
-        <td>$100</td>
+        <td>Karl Karl</td>
+        <td>Vampire</td>
       </tr>
       <tr>
-        <td>February</td>
-        <td>$80</td>
+        <td>Hello Hello</td>
+        <td>Human</td>
+      </tr>
+       <tr>
+        <td>Mark Mark</td>
+        <td>Vampire</td>
       </tr>
     </tbody>
     <tfoot>
-      <tr>
-        <td>Sum</td>
-        <td>$180</td>
-      </tr>
-    </tfoot>
   </table>
 
   <button class="btn btn-primary" onclick="insert_row()">Insert a Row</button>
