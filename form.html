@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Enter your data</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+    function display_chosen_option() {
+      var x = document.getElementById("mySelect").selectedIndex;
+      var y = document.getElementById("mySelect").options;
+      location = y[x].value;
+    }
+
+    function output_user_info() {
+      var user_name_str = document.getElementById('first_name').value + " " + document.getElementById('middle_name').value +
+        " " + document.getElementById('last_name').value;
+
+      // Created a temp array called 'myarray' that holds the human
+      // or vampire result.
+      // 'random' randomly determines the result inside of the 'myarray'.
+      var myarray = new Array("Human", "Vampire");
+      var random = myarray[Math.floor(Math.random() * myarray.length)];
+
+      var table = document.getElementById("saving_table");
+      var row = table.insertRow(1);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      cell1.innerHTML = user_name_str;
+      cell2.innerHTML = random;
+
+    }
+
+    function output_user_info2(){
+      var user_name_str = document.getElementById('first_name2').value + " " + document.getElementById('middle_name2').value + 
+                          " " + document.getElementById('last_name2').value;
+
+
+      var result_value = 0;
+      var gender_str;
+      if(document.getElementById("male_radio").checked)
+      {
+        gender_str = "The user is male; ";
+      }
+      else
+      {
+        gender_str = "The user is female; ";
+      }
+       
+      var garlic_str;
+      if(document.getElementById("garlic_checkbox").checked)
+      {
+        garlic_str = "The user eats garlic; ";
+      }
+      else
+      {
+        garlic_str = "The user does not eat garlic; ";
+        result_value = result_value + 3;
+      }
+
+      var shadow_str;
+      if(document.getElementById("shadow_checkbox").checked)
+      {
+        shadow_str = "The user has shadow; ";
+      }
+      else
+      {
+        shadow_str = "The user does not have shadow; ";
+        result_value = result_value + 4;
+      }
+
+      var pale_str;
+      if(document.getElementById("pale_checkbox").checked)
+      {
+        pale_str = "The user is complexion pale; ";
+        result_value = result_value + 3;
+      }
+      else
+      {
+        pale_str = "The user is not complexion pale; ";
+      }
+      
+      var result_str
+      if(result_value > 6)
+      {
+        result_str = "Vampire";
+      }
+      else
+      {
+        result_str = "Human";
+      }
+      
+
+
+      document.getElementById('user_info').innerHTML = user_name_str + gender_str + garlic_str + shadow_str + pale_str + result_str;
+
+      var table = document.getElementById("saving_table");
+      var row = table.insertRow(1);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      cell1.innerHTML = user_name_str;
+      cell2.innerHTML = result_str;
+
+    }
+
+    function delete_row() {
+      // delete the second row
+      document.getElementById("saving_table").deleteRow(1);
+    }
+    // based on https://stackoverflow.com/questions/10686888/delete-last-row-in-table
+    function delete_last_row() {
+      var table = document.getElementById('saving_table');
+      var row_count = table.rows.length;
+
+      table.deleteRow(row_count - 1);
+    }
+  </script>
+</head>
+
+<body>
+
+
+  <div class="container">
+
+    <h2>Choose How To Identify The Vampire</h2>
+    <div class="form-group">
+        <select class="form-control" id="mySelect" name="example">
+           <option value='teamMember.html'>Random Guess</option>
+           <option value='threshold.html'>Threshold Based Method</option>
+        </select id="mySelect">
+        <button class="btn btn-primary" onclick="display_chosen_option()">Comfirm Choice</button>
+        <button class="btn btn-primary" onclick="document.getElementById('mySelect').selectedIndex = '-1'">Revert Selected Option</button>
+   </div>
+        
+
+    <h2>Vampire Detection Method: Random</h2>
+    <form>
+      <div class="form-row">
+        <!-- md is short for Medium, >= 768 px -->
+        <div class="form-group col-md-4">
+          <label for="first_name">First Name</label>
+          <!-- possible types:  text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color. -->
+          <input type="text" class="form-control" id="first_name" placeholder="Frist Name">
+        </div>
+
+        <!-- The .form-group class is the easiest way to add some structure to forms. It provides a flexible class that encourages proper grouping of labels, controls, optional help text, and form validation messaging. -->
+        <div class="form-group col-md-4">
+          <label for="middle_name">Middle Name</label>
+          <input type="text" class="form-control" id="middle_name" placeholder="Middle Name">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="last_name">Last Name</label>
+          <input type="text" class="form-control" id="last_name" placeholder="Last Name">
+        </div>
+      </div>
+    </form>
+
+    <!-- How to display all user input information as a paragraph? Finish the output_user_info function -->
+    <button class="btn btn-primary" onclick="output_user_info()">Submit</button>
+
+  <h2>Vampire Detection Method: Threshold</h2>
+  <form>
+    <div class="form-row">
+      <!-- md is short for Medium, >= 768 px -->
+      <div class="form-group col-md-4">
+        <label for="first_name">Frist Name</label>
+        <!-- possible types:  text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color. -->
+        <input type="text" class="form-control" id="first_name2" placeholder="Frist Name">
+      </div>
+
+      <!-- The .form-group class is the easiest way to add some structure to forms. It provides a flexible class that encourages proper grouping of labels, controls, optional help text, and form validation messaging. -->
+      <div class="form-group col-md-4">
+        <label for="middle_name">Middle Name</label>
+        <input type="text" class="form-control" id="middle_name2" placeholder="Middle Name">
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="last_name">Last Name</label>
+        <input type="text" class="form-control" id="last_name2" placeholder="Last Name">
+      </div>
+    </div>
+
+
+   <div class="form-row">
+      <div class="form-group col-md-12">
+        <div class="radio">
+          <label><input type="radio" name="optradio" id="male_radio" checked>Male</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio" id="female_radio">Female</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <!-- without this, your rows will not be aligned -->
+      <div class="form-group col-md-12">
+        <div class="checkbox">
+          <label><input type="checkbox" id="garlic_checkbox">Garlic</label>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" id="shadow_checkbox">Shadow</label>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" id="pale_checkbox">Complexion Pale</label>
+        </div>
+      </div>    
+    </div>
+  </form>
+
+  <!-- How to display all user input information as a paragraph? Finish the output_user_info function -->
+  <button class="btn btn-primary" onclick="output_user_info2()">Submit</button>
+
+    <p id="user_info"></p>
+  </div>
+  <div class="container">
+    <table class="table table-bordered" id="saving_table">
+      <caption>Savings</caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Vampire or Human?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Karl Karl</td>
+          <td>Vampire</td>
+        </tr>
+        <tr>
+          <td>Hello Hello</td>
+          <td>Human</td>
+        </tr>
+        <tr>
+          <td>Mark Mark</td>
+          <td>Vampire</td>
+        </tr>
+      </tbody>
+      <tfoot>
+    </table>
+
+    <button class="btn btn-primary" onclick="delete_row()">Delete the first person</button>
+    <button class="btn btn-primary" onclick="delete_last_row()">Delete the last person</button>
+  </div>
+
+</body>
+
+</html>
