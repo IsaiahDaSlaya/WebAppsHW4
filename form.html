@@ -10,12 +10,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
   <script type="text/javascript">
-    function display_chosen_option() {
-      var x = document.getElementById("mySelect").selectedIndex;
-      var y = document.getElementById("mySelect").options;
-      location = y[x].value;
-    }
-
     function output_user_info() {
       var user_name_str = document.getElementById('first_name').value + " " + document.getElementById('middle_name').value +
         " " + document.getElementById('last_name').value;
@@ -35,68 +29,56 @@
 
     }
 
-    function output_user_info2(){
-      var user_name_str = document.getElementById('first_name2').value + " " + document.getElementById('middle_name2').value + 
-                          " " + document.getElementById('last_name2').value;
+    function output_user_info2() {
+      var user_name_str = document.getElementById('first_name2').value + " " + document.getElementById('middle_name2').value +
+        " " + document.getElementById('last_name2').value;
 
 
       var result_value = 0;
       var gender_str;
-      if(document.getElementById("male_radio").checked)
-      {
-        gender_str = "The user is male; ";
+      if (document.getElementById("male_radio").checked) {
+        gender_str =
+          "A person is a vampire if they have > 6 Total Points, and a person is a Human if they have <= 6 Points.";
+      } else {
+        gender_str =
+          "A person is a vampire if they have > 6 Total Points, and a person is a Human if they have <= 6 Points.";
       }
-      else
-      {
-        gender_str = "The user is female; ";
-      }
-       
+
       var garlic_str;
-      if(document.getElementById("garlic_checkbox").checked)
-      {
-        garlic_str = "The user eats garlic; ";
-      }
-      else
-      {
-        garlic_str = "The user does not eat garlic; ";
+      if (document.getElementById("garlic_checkbox").checked) {
+        garlic_str = "The user eats garlic (+ 0 Points); ";
+      } else {
+        garlic_str = "The user does not eat garlic (+ 3 Points); ";
         result_value = result_value + 3;
       }
 
       var shadow_str;
-      if(document.getElementById("shadow_checkbox").checked)
-      {
-        shadow_str = "The user has shadow; ";
-      }
-      else
-      {
-        shadow_str = "The user does not have shadow; ";
+      if (document.getElementById("shadow_checkbox").checked) {
+        shadow_str = "The user has shadow; (+0 Points)";
+      } else {
+        shadow_str = "The user does not have shadow; (+4 Points)";
         result_value = result_value + 4;
       }
 
       var pale_str;
-      if(document.getElementById("pale_checkbox").checked)
-      {
-        pale_str = "The user is complexion pale; ";
+      if (document.getElementById("pale_checkbox").checked) {
+        pale_str = "The user has a pale complexion; (+3 Points)";
         result_value = result_value + 3;
+      } else {
+        pale_str = "The user does not have a pale complexion; (+0 Points)";
       }
-      else
-      {
-        pale_str = "The user is not complexion pale; ";
-      }
-      
+
       var result_str
-      if(result_value > 6)
-      {
-        result_str = "Vampire";
+      if (result_value > 6) {
+        result_str = "Vampire, Total Points is " + result_value;
+      } else {
+        result_str = "Human, Total Points is " + result_value;
       }
-      else
-      {
-        result_str = "Human";
-      }
-      
 
 
-      document.getElementById('user_info').innerHTML = user_name_str + gender_str + garlic_str + shadow_str + pale_str + result_str;
+
+      document.getElementById('user_info').innerHTML = gender_str + garlic_str + shadow_str + pale_str +
+        result_str;
 
       var table = document.getElementById("saving_table");
       var row = table.insertRow(1);
@@ -125,19 +107,7 @@
 
 
   <div class="container">
-
-    <h2>Choose How To Identify The Vampire</h2>
-    <div class="form-group">
-        <select class="form-control" id="mySelect" name="example">
-           <option value='teamMember.html'>Random Guess</option>
-           <option value='threshold.html'>Threshold Based Method</option>
-        </select id="mySelect">
-        <button class="btn btn-primary" onclick="display_chosen_option()">Comfirm Choice</button>
-        <button class="btn btn-primary" onclick="document.getElementById('mySelect').selectedIndex = '-1'">Revert Selected Option</button>
-   </div>
-        
-
-    <h2>Vampire Detection Method: Random</h2>
+    <h2>Vampire Detection Method: Random Method</h2>
     <form>
       <div class="form-row">
         <!-- md is short for Medium, >= 768 px -->
@@ -163,58 +133,58 @@
     <!-- How to display all user input information as a paragraph? Finish the output_user_info function -->
     <button class="btn btn-primary" onclick="output_user_info()">Submit</button>
 
-  <h2>Vampire Detection Method: Threshold</h2>
-  <form>
-    <div class="form-row">
-      <!-- md is short for Medium, >= 768 px -->
-      <div class="form-group col-md-4">
-        <label for="first_name">Frist Name</label>
-        <!-- possible types:  text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color. -->
-        <input type="text" class="form-control" id="first_name2" placeholder="Frist Name">
-      </div>
-
-      <!-- The .form-group class is the easiest way to add some structure to forms. It provides a flexible class that encourages proper grouping of labels, controls, optional help text, and form validation messaging. -->
-      <div class="form-group col-md-4">
-        <label for="middle_name">Middle Name</label>
-        <input type="text" class="form-control" id="middle_name2" placeholder="Middle Name">
-      </div>
-
-      <div class="form-group col-md-4">
-        <label for="last_name">Last Name</label>
-        <input type="text" class="form-control" id="last_name2" placeholder="Last Name">
-      </div>
-    </div>
-
-
-   <div class="form-row">
-      <div class="form-group col-md-12">
-        <div class="radio">
-          <label><input type="radio" name="optradio" id="male_radio" checked>Male</label>
+    <h2>Vampire Detection Method: Threshold Method</h2>
+    <form>
+      <div class="form-row">
+        <!-- md is short for Medium, >= 768 px -->
+        <div class="form-group col-md-4">
+          <label for="first_name">First Name</label>
+          <!-- possible types:  text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color. -->
+          <input type="text" class="form-control" id="first_name2" placeholder="Frist Name">
         </div>
-        <div class="radio">
-          <label><input type="radio" name="optradio" id="female_radio">Female</label>
+
+        <!-- The .form-group class is the easiest way to add some structure to forms. It provides a flexible class that encourages proper grouping of labels, controls, optional help text, and form validation messaging. -->
+        <div class="form-group col-md-4">
+          <label for="middle_name">Middle Name</label>
+          <input type="text" class="form-control" id="middle_name2" placeholder="Middle Name">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="last_name">Last Name</label>
+          <input type="text" class="form-control" id="last_name2" placeholder="Last Name">
         </div>
       </div>
-    </div>
 
-    <div class="form-row">
-      <!-- without this, your rows will not be aligned -->
-      <div class="form-group col-md-12">
-        <div class="checkbox">
-          <label><input type="checkbox" id="garlic_checkbox">Garlic</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" id="shadow_checkbox">Shadow</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" id="pale_checkbox">Complexion Pale</label>
-        </div>
-      </div>    
-    </div>
-  </form>
 
-  <!-- How to display all user input information as a paragraph? Finish the output_user_info function -->
-  <button class="btn btn-primary" onclick="output_user_info2()">Submit</button>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <div class="radio">
+            <label><input type="radio" name="optradio" id="male_radio" checked>Male</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio" id="female_radio">Female</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <!-- without this, your rows will not be aligned -->
+        <div class="form-group col-md-12">
+          <div class="checkbox">
+            <label><input type="checkbox" id="garlic_checkbox">User Eats Garlic</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" id="shadow_checkbox">User Has A Shadow</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" id="pale_checkbox">User Has A Pale Complexion</label>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- How to display all user input information as a paragraph? Finish the output_user_info function -->
+    <button class="btn btn-primary" onclick="output_user_info2()">Submit</button>
 
     <p id="user_info"></p>
   </div>
@@ -229,16 +199,16 @@
       </thead>
       <tbody>
         <tr>
-          <td>Karl Karl</td>
-          <td>Vampire</td>
+          <td>Karl Abrahamson</td>
+          <td>Human, Total Points is 3</td>
         </tr>
         <tr>
-          <td>Hello Hello</td>
-          <td>Human</td>
+          <td>Rui Wu</td>
+          <td>Vampire, Total Points is 7</td>
         </tr>
         <tr>
-          <td>Mark Mark</td>
-          <td>Vampire</td>
+          <td>Venkat Gudivada</td>
+          <td>Vampire, Total Points is 7</td>
         </tr>
       </tbody>
       <tfoot>
