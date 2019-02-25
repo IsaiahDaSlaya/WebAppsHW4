@@ -5,13 +5,15 @@
   <title>Enter your data</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script type="text/javascript">
-
-    window.onload = function() {
+    window.onload = function () {
       document.getElementById("randomForm").style.display = 'none';
       document.getElementById("thresholdForm").style.display = 'none';
       document.getElementById("randomSubmit").style.display = 'none';
@@ -20,19 +22,17 @@
 
     function onFormSelected() {
       var form = document.getElementById("mySelect").value;
-      if(form == "form2") {
+      if (form == "form2") {
         document.getElementById("randomForm").style.display = 'none';
         document.getElementById("randomSubmit").style.display = 'none';
         document.getElementById("thresholdForm").style.display = '';
         document.getElementById("thresholdSubmit").style.display = '';
-      }
-      else if (form == "form1"){
+      } else if (form == "form1") {
         document.getElementById("randomForm").style.display = '';
         document.getElementById("randomSubmit").style.display = '';
         document.getElementById("thresholdForm").style.display = 'none';
         document.getElementById("thresholdSubmit").style.display = 'none';
-      }
-      else {
+      } else {
         document.getElementById("randomForm").style.display = 'none';
         document.getElementById("thresholdForm").style.display = 'none';
         document.getElementById("randomSubmit").style.display = 'none';
@@ -109,7 +109,7 @@
 
 
 
-      document.getElementById('user_info').innerHTML = gender_str + garlic_str + shadow_str + pale_str + 
+      document.getElementById('user_info').innerHTML = gender_str + garlic_str + shadow_str + pale_str +
         result_str;
 
       var table = document.getElementById("saving_table");
@@ -133,23 +133,50 @@
       table.deleteRow(row_count - 1);
     }
   </script>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="./index.html">Is My Classmate A Vampire?</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Team Member Introductions</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Vampire Detection Method Selection</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
   <div class="container">
-    <h2>Choose How To Identify The Vampire</h2>
+    <h2 class="text-center" style="padding-bottom: 50px; padding-top: 50px">Choose How To Identify The Vampire</h2>
     <div class="form-group">
-        <select class="form-control" id="mySelect" name="example" onchange="onFormSelected()">
-           <option value=''>Select Your form</option>
-           <option value='form1'>Random Guess</option>
-           <option value='form2'>Threshold Based Method</option>
-        </select id="mySelect">
-   </div>
+      <select class="form-control" id="mySelect" name="example" onchange="onFormSelected()">
+        <option value=''>Select Your form</option>
+        <option value='form1'>Random Guess</option>
+        <option value='form2'>Threshold Based Method</option>
+      </select id="mySelect">
+    </div>
 
 
-    
+
     <form id="randomForm">
       <h2>Vampire Detection Method: Random Method</h2>
       <div class="form-row">
@@ -175,9 +202,9 @@
 
     <!-- How to display all user input information as a paragraph? Finish the output_user_info function -->
     <button class="btn btn-primary" id="randomSubmit" onclick="output_user_info()">Submit</button>
-    
 
-    
+
+
     <form id="thresholdForm">
       <h2>Vampire Detection Method: Threshold Method</h2>
       <div class="form-row">
@@ -229,8 +256,8 @@
     </form>
 
     <!-- How to display all user input information as a paragraph? Finish the output_user_info function -->
-    <button class="btn btn-primary" id="thresholdSubmit"onclick="output_user_info2()">Submit</button>
-    
+    <button class="btn btn-primary" id="thresholdSubmit" onclick="output_user_info2()">Submit</button>
+
 
     <p id="user_info"></p>
   </div>
@@ -262,7 +289,11 @@
 
     <button class="btn btn-primary" onclick="delete_row()">Delete the first person</button>
     <button class="btn btn-primary" onclick="delete_last_row()">Delete the last person</button>
+    <a href="./index.html" class="btn btn-info" role="button">Go Back To Home Page</a>
+
   </div>
+
+
 
 </body>
 
