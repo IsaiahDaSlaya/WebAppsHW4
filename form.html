@@ -10,6 +10,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
   <script type="text/javascript">
+    function display_chosen_option() {
+      var x = document.getElementById("mySelect").selectedIndex;
+      var y = document.getElementById("mySelect").options;
+      location = y[x].value;
+    }
+
     function output_user_info() {
       var user_name_str = document.getElementById('first_name').value + " " + document.getElementById('middle_name').value +
         " " + document.getElementById('last_name').value;
@@ -77,7 +83,7 @@
 
 
 
-      document.getElementById('user_info').innerHTML = gender_str + garlic_str + shadow_str + pale_str +
+      document.getElementById('user_info').innerHTML = gender_str + garlic_str + shadow_str + pale_str + 
         result_str;
 
       var table = document.getElementById("saving_table");
@@ -107,6 +113,17 @@
 
 
   <div class="container">
+    <h2>Choose How To Identify The Vampire</h2>
+    <div class="form-group">
+        <select class="form-control" id="mySelect" name="example">
+           <option value='teamMember.html'>Random Guess</option>
+           <option value='threshold.html'>Threshold Based Method</option>
+        </select id="mySelect">
+        <button class="btn btn-primary" onclick="display_chosen_option()">Comfirm Choice</button>
+        <button class="btn btn-primary" onclick="document.getElementById('mySelect').selectedIndex = '-1'">Revert Selected Option</button>
+   </div>
+
+
     <h2>Vampire Detection Method: Random Method</h2>
     <form>
       <div class="form-row">
