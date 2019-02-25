@@ -10,10 +10,36 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
   <script type="text/javascript">
-    function display_chosen_option() {
-      var x = document.getElementById("mySelect").selectedIndex;
-      var y = document.getElementById("mySelect").options;
-      location = y[x].value;
+
+    window.onload = function() {
+      document.getElementById("randomForm").style.display = 'none';
+      document.getElementById("thresholdForm").style.display = 'none';
+      document.getElementById("randomSubmit").style.display = 'none';
+      document.getElementById("thresholdSubmit").style.display = 'none';
+    }
+
+    function onFormSelected() {
+      var form = document.getElementById("mySelect").value;
+      if(form == "form2") {
+        document.getElementById("randomForm").style.display = 'none';
+        document.getElementById("randomSubmit").style.display = 'none';
+        document.getElementById("thresholdForm").style.display = '';
+        document.getElementById("thresholdSubmit").style.display = '';
+      }
+      else if (form == "form1"){
+        document.getElementById("randomForm").style.display = '';
+        document.getElementById("randomSubmit").style.display = '';
+        document.getElementById("thresholdForm").style.display = 'none';
+        document.getElementById("thresholdSubmit").style.display = 'none';
+      }
+      else {
+        document.getElementById("randomForm").style.display = 'none';
+        document.getElementById("thresholdForm").style.display = 'none';
+        document.getElementById("randomSubmit").style.display = 'none';
+        document.getElementById("thresholdSubmit").style.display = 'none';
+      }
+
+
     }
 
     function output_user_info() {
@@ -115,17 +141,17 @@
   <div class="container">
     <h2>Choose How To Identify The Vampire</h2>
     <div class="form-group">
-        <select class="form-control" id="mySelect" name="example">
-           <option value='teamMember.html'>Random Guess</option>
-           <option value='threshold.html'>Threshold Based Method</option>
+        <select class="form-control" id="mySelect" name="example" onchange="onFormSelected()">
+           <option value=''>Select Your form</option>
+           <option value='form1'>Random Guess</option>
+           <option value='form2'>Threshold Based Method</option>
         </select id="mySelect">
-        <button class="btn btn-primary" onclick="display_chosen_option()">Comfirm Choice</button>
-        <button class="btn btn-primary" onclick="document.getElementById('mySelect').selectedIndex = '-1'">Revert Selected Option</button>
    </div>
 
 
-    <h2>Vampire Detection Method: Random Method</h2>
-    <form>
+    
+    <form id="randomForm">
+      <h2>Vampire Detection Method: Random Method</h2>
       <div class="form-row">
         <!-- md is short for Medium, >= 768 px -->
         <div class="form-group col-md-4">
@@ -148,10 +174,12 @@
     </form>
 
     <!-- How to display all user input information as a paragraph? Finish the output_user_info function -->
-    <button class="btn btn-primary" onclick="output_user_info()">Submit</button>
+    <button class="btn btn-primary" id="randomSubmit" onclick="output_user_info()">Submit</button>
+    
 
-    <h2>Vampire Detection Method: Threshold Method</h2>
-    <form>
+    
+    <form id="thresholdForm">
+      <h2>Vampire Detection Method: Threshold Method</h2>
       <div class="form-row">
         <!-- md is short for Medium, >= 768 px -->
         <div class="form-group col-md-4">
@@ -201,7 +229,8 @@
     </form>
 
     <!-- How to display all user input information as a paragraph? Finish the output_user_info function -->
-    <button class="btn btn-primary" onclick="output_user_info2()">Submit</button>
+    <button class="btn btn-primary" id="thresholdSubmit"onclick="output_user_info2()">Submit</button>
+    
 
     <p id="user_info"></p>
   </div>
